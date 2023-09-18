@@ -1,5 +1,5 @@
 const config = {
-    api: 'https://localhost:44374/api',
+    api: 'https://localhost:5001/api',
     options: {
       headers: { 'content-type': 'application/json' },
     },
@@ -31,45 +31,14 @@ const config = {
       });
   };
   
-  /*const httpPut = (endpoint: string, data) => {
-    return fetch(`${config.api}${endpoint}`, {
-      method: 'put',
-      body: data ? JSON.stringify(data) : null,
-      ...config.options,
-    })
-      .then((response) => handleResponse(response))
-      .then((response) => response)
-      .catch((error) => {
-        console.error(error);
-        throw Error(error);
-      });
-  };
-  
-  const httpDelete = (endpoint: string, data) => {
-    return fetch(`${config.api}${endpoint}`, {
-      method: 'delete',
-      ...config.options,
-    })
-      .then((response) => handleResponse(response))
-      .then((response) => response)
-      .catch((error) => {
-        console.error(error);
-        throw Error(error);
-      });
-  };*/
-  
   const handleResponse = async (response: Response) => {
 
-
-
-    // You can handle 400 errors as well.
     if (response.status === 200) {
       return await response.json();
     } else {
-        // const message = await response.json();
       throw Error(response.statusText);
     }
   };
   
-  export default { httpGet, httpPost/*, httpPut, httpDelete */};
+  export default { httpGet, httpPost};
   
